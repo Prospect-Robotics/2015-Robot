@@ -51,7 +51,7 @@ public class Elevator extends PIDSubsystem {
 		return elevatorMagnet.get();
 	}
 
-	public int getCount() {
+	public int getCounter() {
 		return counter;
 	}
 

@@ -5,17 +5,18 @@ import org.usfirst.frc.team2813.subsystems.Elevator;
 /**
  *
  */
-public class ElevatorIncUp extends Elevator {
+public class ElevatorIncDown extends Elevator {
 
 	boolean done = false;
 	boolean run = false;
 
-	public ElevatorIncUp() {
+	public ElevatorIncDown() {
+
 	}
 
 	protected void initialize() {
-		//disable the PID
-		if (counterMax())
+		// disable the PID
+		if (getCounter() == 0)
 			run = false;
 		else
 			elevatorUp();
