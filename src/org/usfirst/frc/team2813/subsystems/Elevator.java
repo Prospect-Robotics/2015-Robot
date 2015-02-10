@@ -17,6 +17,15 @@ public class Elevator extends PIDSubsystem {
 	Encoder elevatorEncoder = RobotMap.elevatorelevatorEncoder;
 	DigitalInput elevatorMagnet = RobotMap.elevatorelevatorMagnet;
 
+	int counter = 0;
+
+	double leftUp = 1.0;
+	double leftDown = -1.0;
+	double rightUp = 1.0;
+	double rightDown = -1.0;
+	
+	double encoder;
+
 	public Elevator() {
 		super("Elevator", 1.0, 0.0, 0.0);
 		setAbsoluteTolerance(0.2);
@@ -36,5 +45,45 @@ public class Elevator extends PIDSubsystem {
 
 	protected void usePIDOutput(double output) {
 		elevatorLeft.pidWrite(output);
+	}
+
+	public boolean getMagnet() {
+		return elevatorMagnet.get();
+	}
+
+	public int getCount() {
+		return counter;
+	}
+
+	public void setCounter(int add) {
+		counter += add;
+	}
+
+	public void addCounter() {
+		counter++;
+	}
+
+	public boolean counterMax() {
+		if (counter == 4)
+			return true;
+		else
+			return false;
+	}
+
+	public void elevatorUp() {
+		elevatorLeft.set(leftUp);
+		elevatorRight.set(rightUp);
+	}
+	
+	public void elevatorStop() {
+		elevatorLeft.set(0.0);
+		elevatorRight.set(0.0);
+	}
+	
+	public void triggerElevatorPid() {
+		// get encoder insert value into encoder
+					elevatorStop();
+					//enable the PID
+					// set the pid to encoder
 	}
 }
