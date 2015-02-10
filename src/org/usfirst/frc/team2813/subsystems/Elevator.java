@@ -55,12 +55,16 @@ public class Elevator extends PIDSubsystem {
 		return counter;
 	}
 
-	public void setCounter(int add) {
+	public void counterAddCustom(int add) {
 		counter += add;
 	}
 
 	public void addCounter() {
 		counter++;
+	}
+	
+	public void minusCounter() {
+		counter--;
 	}
 
 	public boolean counterMax() {
@@ -75,6 +79,11 @@ public class Elevator extends PIDSubsystem {
 		elevatorRight.set(rightUp);
 	}
 	
+	public void elevatorDown() {
+		elevatorLeft.set(leftDown);
+		elevatorRight.set(rightDown);
+	}
+	
 	public void elevatorStop() {
 		elevatorLeft.set(0.0);
 		elevatorRight.set(0.0);
@@ -85,5 +94,6 @@ public class Elevator extends PIDSubsystem {
 					elevatorStop();
 					//enable the PID
 					// set the pid to encoder
+					
 	}
 }

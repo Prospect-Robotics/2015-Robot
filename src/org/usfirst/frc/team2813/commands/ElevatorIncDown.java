@@ -27,6 +27,7 @@ public class ElevatorIncDown extends Elevator {
 			done = true;
 		else if (getMagnet()) {
 			triggerElevatorPid();
+			minusCounter();
 			done = true;
 		}
 	}

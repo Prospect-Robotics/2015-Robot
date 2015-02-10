@@ -26,6 +26,7 @@ public class ElevatorIncUp extends Elevator {
 			done = true;
 		else if (getMagnet()) {
 			triggerElevatorPid();
+			addCounter();
 			done = true;
 		}
 	}
