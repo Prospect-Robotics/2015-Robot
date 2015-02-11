@@ -55,7 +55,7 @@ public class RobotMap {
 				elevatorelevatorEncoder);
 		elevatorelevatorEncoder.setDistancePerPulse(1.0);
 		elevatorelevatorEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
-		elevatorelevatorMagnet = new DigitalInput(2);
+		elevatorelevatorMagnet = new DigitalInput(3);
 		LiveWindow.addSensor("Elevator", "elevatorMagnet",
 				elevatorelevatorMagnet);
 
