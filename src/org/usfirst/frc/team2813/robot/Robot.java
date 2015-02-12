@@ -22,7 +22,7 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
 
     public static OI oi;
-    public static Elevator elevator;;
+    public static Elevator elevator;
     public static Nav6 nav6;
     //public static IntakePivot intakePivot;;
     //public static Carriage carriage;
