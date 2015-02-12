@@ -69,7 +69,7 @@ public class Robot extends IterativeRobot {
         //SmartDashboard.putBoolean("Reed Sensor",
         //		RobotMap.elevatorelevatorMagnet.get());
         RobotMap.elevatorGet.set(RobotMap.elevatorelevatorMagnet.get());
-        
+
         if (oi.getdriver1().getRawButton(1)) nav6.resetNav6(); //if button 1 is pressed on joystick the nav6 resets heading
         nav6.displayNav6Data(true); //Display Nav6 data on SmartDashboard or not
         SmartDashboard.putBoolean("Reed Sensor", elevator.getMagnet());
