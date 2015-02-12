@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2813.commands;
 
 import org.usfirst.frc.team2813.robot.Robot;
+import org.usfirst.frc.team2813.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -27,7 +28,7 @@ public class ElevatorIncDown extends Command {
 	protected void execute() {
 		if (!run)
 			done = true;
-		else if (Robot.elevator.getMagnet()) {
+		else if (RobotMap.elevatorelevatorMagnet.get()) {
 			Robot.elevator.triggerElevatorPid();
 			Robot.elevator.minusCounter();
 			done = true;
