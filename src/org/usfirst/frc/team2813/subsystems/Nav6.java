@@ -49,12 +49,16 @@ public class Nav6 extends Subsystem {
     public float getYaw(){
         return imu.getYaw();
     }
-    public void resetNav6() {
+    public boolean resetNav6() {
         boolean is_calibrating = imu.isCalibrating();
         if (!is_calibrating) {
             Timer.delay(0.3);
             imu.zeroYaw();
+            return true;
+        } else {
+            return false;
         }
+
     }
     public void displayNav6Data (boolean display) {
         if (display) {
