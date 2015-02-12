@@ -7,40 +7,38 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ElevatorIncDown extends Command {
+public class ElevatorJogDown extends Command {
 
-	boolean done = false;
-	boolean run = false;
-
-	public ElevatorIncDown() {
+	public ElevatorJogDown() {
 		requires(Robot.elevator);
 	}
 
 	protected void initialize() {
-		// disable the PID
-		if (Robot.elevator.getCounter() == 0)
-			run = false;
-		else
-			Robot.elevator.elevatorUp();
+		// disable PID
+
 	}
 
 	protected void execute() {
-		if (!run)
-			done = true;
-		else if (Robot.elevator.getMagnet()) {
-			Robot.elevator.triggerElevatorPid();
+		Robot.elevator.elevatorDown();
+		if (Robot.elevator.getMagnet()) {
 			Robot.elevator.minusCounter();
-			done = true;
+			if (Robot.elevator.getCounter() <= 0) {
+				Robot.elevator.elevatorStop();
+			}
 		}
 	}
 
 	protected boolean isFinished() {
-		return done;
+		return false;
 	}
 
 	protected void end() {
+		Robot.elevator.elevatorStop();
 	}
 
 	protected void interrupted() {
+		Robot.elevator.elevatorStop();
+		// Enable Pid
 	}
+
 }

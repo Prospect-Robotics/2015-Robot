@@ -23,7 +23,7 @@ public class Elevator extends PIDSubsystem {
 	double leftDown = -1.0;
 	double rightUp = 1.0;
 	double rightDown = -1.0;
-	
+
 	double encoder;
 
 	public Elevator() {
@@ -48,7 +48,10 @@ public class Elevator extends PIDSubsystem {
 	}
 
 	public boolean getMagnet() {
-		return elevatorMagnet.get();
+		if (RobotMap.elevatorelevatorMagnet.get())
+			return false;
+		else
+			return true;
 	}
 
 	public int getCounter() {
@@ -62,7 +65,7 @@ public class Elevator extends PIDSubsystem {
 	public void addCounter() {
 		counter++;
 	}
-	
+
 	public void minusCounter() {
 		counter--;
 	}
@@ -78,22 +81,22 @@ public class Elevator extends PIDSubsystem {
 		elevatorLeft.set(leftUp);
 		elevatorRight.set(rightUp);
 	}
-	
+
 	public void elevatorDown() {
 		elevatorLeft.set(leftDown);
 		elevatorRight.set(rightDown);
 	}
-	
+
 	public void elevatorStop() {
 		elevatorLeft.set(0.0);
 		elevatorRight.set(0.0);
 	}
-	
+
 	public void triggerElevatorPid() {
 		// get encoder insert value into encoder
-					elevatorStop();
-					//enable the PID
-					// set the pid to encoder
-					
+		elevatorStop();
+		// enable the PID
+		// set the pid to encoder
+
 	}
 }
