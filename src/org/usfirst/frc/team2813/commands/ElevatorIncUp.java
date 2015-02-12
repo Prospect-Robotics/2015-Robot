@@ -1,32 +1,37 @@
 package org.usfirst.frc.team2813.commands;
 
+import org.usfirst.frc.team2813.robot.Robot;
+import org.usfirst.frc.team2813.robot.RobotMap;
 import org.usfirst.frc.team2813.subsystems.Elevator;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ElevatorIncUp extends Elevator {
+public class ElevatorIncUp extends Command {
 
 	boolean done = false;
 	boolean run = false;
 
 	public ElevatorIncUp() {
+		requires(Robot.elevator);
 	}
 
 	protected void initialize() {
 		//disable the PID
-		if (counterMax())
+		if (Robot.elevator.counterMax())
 			run = false;
 		else
-			elevatorUp();
+			Robot.elevator.elevatorUp();
 	}
 
 	protected void execute() {
 		if (!run)
 			done = true;
-		else if (getMagnet()) {
-			triggerElevatorPid();
-			addCounter();
+		else if (!RobotMap.elevatorelevatorMagnet.get()) {
+			Robot.elevator.triggerElevatorPid();
+			Robot.elevator.addCounter();
 			done = true;
 		}
 	}
