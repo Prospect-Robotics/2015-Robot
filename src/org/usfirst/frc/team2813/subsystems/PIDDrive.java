@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2813.robot.Robot;
 import org.usfirst.frc.team2813.robot.RobotMap;
+import org.usfirst.frc.team2813.commands.PIDrotation;
+import org.usfirst.frc.team2813.commands.FODrive;
 
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -44,9 +46,12 @@ public class PIDDrive extends PIDSubsystem {
 	
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+
+        //setDefaultCommand(new FODrive());
+        setDefaultCommand(new PIDrotation());
     }
     public double returnPIDInput() {
-        return 0;//Placeholder
+        return Robot.nav6.pidGet();
     }
     public void usePIDOutput(double output){
         SmartDashboard.putNumber("PIDout", output);

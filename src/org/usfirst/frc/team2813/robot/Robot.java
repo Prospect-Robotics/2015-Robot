@@ -24,10 +24,10 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static Elevator elevator;
     public static Nav6 nav6;
+    public static PIDDrive pIDDrive;
     //public static IntakePivot intakePivot;;
     //public static Carriage carriage;
     //public static IntakeRollers intakeRollers;
-    //public static PIDDrive pIDDrive;
     //public static Compressor compressor;
 
     /**
@@ -38,10 +38,10 @@ public class Robot extends IterativeRobot {
         RobotMap.init();
         nav6 = new Nav6();
         elevator = new Elevator();
+        pIDDrive = new PIDDrive();
         //intakePivot = new IntakePivot();
         //carriage = new Carriage();
         //intakeRollers = new IntakeRollers();
-        //pIDDrive = new PIDDrive();
         //compressor = new Compressor();
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be 

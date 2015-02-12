@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2813.IMU.IMU;
+
 import org.usfirst.frc.team2813.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -44,6 +45,9 @@ public class Nav6 extends Subsystem {
     }
     public double pidGet () {
         return imu.pidGet();
+    }
+    public float getYaw(){
+        return imu.getYaw();
     }
     public void resetNav6() {
         boolean is_calibrating = imu.isCalibrating();
