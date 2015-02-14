@@ -29,7 +29,7 @@ public class Nav6 extends Subsystem {
             // You can also use the IMUAdvanced class for advanced
             // features.
 
-            byte update_rate_hz = 50;
+            byte update_rate_hz = 100;
             //imu = new IMU(serial_port,update_rate_hz);
             imu = new IMU(serial_port,update_rate_hz);
             System.out.println("imu init");

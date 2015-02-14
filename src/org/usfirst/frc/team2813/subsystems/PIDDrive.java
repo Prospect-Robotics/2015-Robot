@@ -33,7 +33,9 @@ public class PIDDrive extends PIDSubsystem {
     public PIDDrive() {
         super("Drive", 0.03, 0.001, 0.05);
         getPIDController().setContinuous();
+        getPIDController().setInputRange(-180, 180);
         getPIDController().setOutputRange(-1.0, 1.0);
+        getPIDController().setAbsoluteTolerance(1);
         LiveWindow.addActuator("RobotDrive", "PIDSubsystem Controller", getPIDController());
         // Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
