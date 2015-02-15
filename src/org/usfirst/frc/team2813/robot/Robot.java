@@ -102,6 +102,8 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         nav6.displayNav6Data(true);
         Scheduler.getInstance().run();
+        SmartDashboard.putBoolean("MagSensor", elevator.getMagnet());
+        SmartDashboard.putInt("Counter", elevator.getCounter());
     }
 
     /**

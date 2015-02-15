@@ -30,9 +30,7 @@ public class Elevator extends PIDSubsystem {
 		super("Elevator", 1.0, 0.0, 0.0);
 		setAbsoluteTolerance(0.2);
 		getPIDController().setContinuous(false);
-		LiveWindow.addActuator("Elevator", "PIDSubsystem Controller",
-				getPIDController());
-
+		LiveWindow.addActuator("Elevator", "PIDSubsystem Controller", getPIDController());
 	}
 
 	public void initDefaultCommand() {

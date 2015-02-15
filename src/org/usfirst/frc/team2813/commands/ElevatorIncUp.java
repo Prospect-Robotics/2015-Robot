@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ElevatorIncUp extends Command {
 
 	boolean done = false;
-	boolean run = false;
+	boolean run = true;
 
 	public ElevatorIncUp() {
 		requires(Robot.elevator);
@@ -20,16 +20,18 @@ public class ElevatorIncUp extends Command {
 
 	protected void initialize() {
 		//disable the PID
-		if (Robot.elevator.counterMax())
+		if (Robot.elevator.counterMax()) {
 			run = false;
-		else
+		} else {
 			Robot.elevator.elevatorUp();
+		}
+			
 	}
 
 	protected void execute() {
-		if (!run)
+		if (!run) {
 			done = true;
-		else if (!RobotMap.elevatorelevatorMagnet.get()) {
+		} else if (!RobotMap.elevatorelevatorMagnet.get()) {
 			Robot.elevator.triggerElevatorPid();
 			Robot.elevator.addCounter();
 			done = true;
@@ -41,6 +43,8 @@ public class ElevatorIncUp extends Command {
 	}
 
 	protected void end() {
+		done = false;
+		System.out.print("ElevatorIucUP Done");
 	}
 
 	protected void interrupted() {

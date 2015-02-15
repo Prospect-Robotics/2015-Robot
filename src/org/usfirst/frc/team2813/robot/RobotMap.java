@@ -31,7 +31,7 @@ public class RobotMap {
 		LiveWindow.addActuator("Elevator", "elevatorRight", (Talon) elevatorelevatorRight);
 		LiveWindow.addActuator("Elevator", "elevatorLeft", (Talon) elevatorelevatorLeft);
 
-		elevatorelevatorEncoder = new Encoder(0, 1, false, EncodingType.k4X);
+		elevatorelevatorEncoder = new Encoder(0, 1, 2, false);
 		LiveWindow.addSensor("Elevator", "elevatorEncoder", elevatorelevatorEncoder);
 		elevatorelevatorEncoder.setDistancePerPulse(1.0);
 		elevatorelevatorEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);

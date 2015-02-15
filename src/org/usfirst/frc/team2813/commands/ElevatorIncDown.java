@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ElevatorIncDown extends Command {
 
 	boolean done = false;
-	boolean run = false;
+	boolean run = true;
 
 	public ElevatorIncDown() {
 		requires(Robot.elevator);
@@ -40,6 +40,7 @@ public class ElevatorIncDown extends Command {
 	}
 
 	protected void end() {
+		done = false;
 	}
 
 	protected void interrupted() {
