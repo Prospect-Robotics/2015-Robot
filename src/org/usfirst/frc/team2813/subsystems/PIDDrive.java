@@ -2,14 +2,17 @@ package org.usfirst.frc.team2813.subsystems;
 
 
 
-import org.usfirst.frc.team2813.robot.Robot;
-import org.usfirst.frc.team2813.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team2813.robot.Robot;
+import org.usfirst.frc.team2813.robot.RobotMap;
+import org.usfirst.frc.team2813.commands.PIDrotation;
+import org.usfirst.frc.team2813.commands.FODrive;
+
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 /**
@@ -30,7 +33,9 @@ public class PIDDrive extends PIDSubsystem {
     public PIDDrive() {
         super("Drive", 0.03, 0.001, 0.05);
         getPIDController().setContinuous();
+        getPIDController().setInputRange(-180, 180);
         getPIDController().setOutputRange(-1.0, 1.0);
+        getPIDController().setAbsoluteTolerance(1);
         LiveWindow.addActuator("RobotDrive", "PIDSubsystem Controller", getPIDController());
         // Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
@@ -44,7 +49,7 @@ public class PIDDrive extends PIDSubsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
 
-        //setDefaultCommand(new FODrive());
+        setDefaultCommand(new FODrive());
         //setDefaultCommand(new PIDrotation());
     }
     public double returnPIDInput() {
@@ -73,4 +78,3 @@ public class PIDDrive extends PIDSubsystem {
         enable();
     }
 }
-

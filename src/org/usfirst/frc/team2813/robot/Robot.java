@@ -22,7 +22,7 @@ public class Robot extends IterativeRobot {
     public static Elevator elevator;
     public static Nav6 nav6;
     public static PIDDrive pIDDrive;
-    public static IntakePivot intakePivot;;
+    //public static IntakePivot intakePivot;;
     //public static Carriage carriage;
     //public static IntakeRollers intakeRollers;
     //public static Compressor compressor;
@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
         nav6 = new Nav6();
         elevator = new Elevator();
         pIDDrive = new PIDDrive();
-        intakePivot = new IntakePivot();
+        //intakePivot = new IntakePivot();
         //carriage = new Carriage();
         //intakeRollers = new IntakeRollers();
         //compressor = new Compressor();
@@ -102,6 +102,8 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         nav6.displayNav6Data(true);
         Scheduler.getInstance().run();
+        SmartDashboard.putBoolean("MagSensor", elevator.getMagnet());
+        SmartDashboard.putInt("Counter", elevator.getCounter());
     }
 
     /**
@@ -111,3 +113,4 @@ public class Robot extends IterativeRobot {
         LiveWindow.run();
     }
 }
+>>>>>>> refs/remotes/origin/master
