@@ -2,6 +2,8 @@ package org.usfirst.frc.team2813.robot;
 
 import org.usfirst.frc.team2813.commands.ElevatorIncDown;
 import org.usfirst.frc.team2813.commands.ElevatorIncUp;
+import org.usfirst.frc.team2813.commands.IntakeClose;
+import org.usfirst.frc.team2813.commands.IntakeOpen;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -62,6 +64,8 @@ public class OI {
 		driver1 = new Joystick(0);
 
 		new JoystickButton(driver1, 6).whenPressed(new ElevatorIncUp());
+		new JoystickButton(driver1, 7).whenPressed(new IntakeOpen());
+		new JoystickButton(driver1, 8).whenPressed(new IntakeClose());
 		
 
 		// SmartDashboard Buttons

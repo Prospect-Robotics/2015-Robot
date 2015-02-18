@@ -48,6 +48,7 @@ public class Elevator extends PIDSubsystem {
 	}
 
 	public boolean getMagnet() {
+		
 		if (RobotMap.elevatorelevatorMagnet.get())
 			return false;
 		else
