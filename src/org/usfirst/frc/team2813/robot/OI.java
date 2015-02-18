@@ -1,5 +1,8 @@
 package org.usfirst.frc.team2813.robot;
 
+import org.usfirst.frc.team2813.commands.CarriageForward;
+import org.usfirst.frc.team2813.commands.CarriageNoMove;
+import org.usfirst.frc.team2813.commands.CarriageReverse;
 import org.usfirst.frc.team2813.commands.ElevatorIncDown;
 import org.usfirst.frc.team2813.commands.ElevatorIncUp;
 import org.usfirst.frc.team2813.commands.IntakeClose;
@@ -66,6 +69,11 @@ public class OI {
 		new JoystickButton(driver1, 6).whenPressed(new ElevatorIncUp());
 		new JoystickButton(driver1, 7).whenPressed(new IntakeOpen());
 		new JoystickButton(driver1, 8).whenPressed(new IntakeClose());
+		new JoystickButton(driver1, 9).whenPressed(new CarriageForward());
+		new JoystickButton(driver1, 10).whenPressed(new CarriageReverse());
+		new JoystickButton(driver1, 11).whenPressed(new CarriageNoMove());
+		
+		
 		
 
 		// SmartDashboard Buttons
