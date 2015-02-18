@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2813.subsystems;
 
+import org.usfirst.frc.team2813.commands.ElevatorStay;
 import org.usfirst.frc.team2813.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -36,7 +37,7 @@ public class Elevator extends PIDSubsystem {
 	}
 
 	public void initDefaultCommand() {
-
+		setDefaultCommand(new ElevatorStay());
 	}
 
 	protected double returnPIDInput() {
@@ -99,5 +100,8 @@ public class Elevator extends PIDSubsystem {
 		// enable the PID
 		// set the pid to encoder
 
+	}
+	public double returnEncoder(){
+		return elevatorEncoder.pidGet();
 	}
 }
