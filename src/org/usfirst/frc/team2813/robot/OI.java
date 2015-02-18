@@ -7,6 +7,7 @@ import org.usfirst.frc.team2813.commands.ElevatorIncDown;
 import org.usfirst.frc.team2813.commands.ElevatorIncUp;
 import org.usfirst.frc.team2813.commands.IntakeClose;
 import org.usfirst.frc.team2813.commands.IntakeOpen;
+import org.usfirst.frc.team2813.commands.IntakeRolling;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -72,6 +73,7 @@ public class OI {
 		new JoystickButton(driver1, 9).whenPressed(new CarriageForward());
 		new JoystickButton(driver1, 10).whenPressed(new CarriageReverse());
 		new JoystickButton(driver1, 11).whenPressed(new CarriageNoMove());
+		new JoystickButton(driver1, 12).whenPressed(new IntakeRolling());
 		
 		
 		
