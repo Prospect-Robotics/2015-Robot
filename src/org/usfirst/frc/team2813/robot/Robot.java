@@ -2,6 +2,7 @@ package org.usfirst.frc.team2813.robot;
 
 import org.usfirst.frc.team2813.subsystems.*;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -22,10 +23,10 @@ public class Robot extends IterativeRobot {
     public static Elevator elevator;
     public static Nav6 nav6;
     public static PIDDrive pIDDrive;
-    //public static IntakePivot intakePivot;;
-    //public static Carriage carriage;
-    //public static IntakeRollers intakeRollers;
-    //public static Compressor compressor;
+    public static IntakePivot intakePivot;;
+    public static Carriage carriage;
+    public static IntakeRollers intakeRollers;
+    public static Compressor compressor;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -36,10 +37,10 @@ public class Robot extends IterativeRobot {
         nav6 = new Nav6();
         elevator = new Elevator();
         pIDDrive = new PIDDrive();
-        //intakePivot = new IntakePivot();
-        //carriage = new Carriage();
-        //intakeRollers = new IntakeRollers();
-        //compressor = new Compressor();
+        intakePivot = new IntakePivot();
+        carriage = new Carriage();
+        intakeRollers = new IntakeRollers();
+        compressor = new Compressor();
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be 
         // constructed yet. Thus, their requires() statements may grab null 
@@ -113,4 +114,3 @@ public class Robot extends IterativeRobot {
         LiveWindow.run();
     }
 }
->>>>>>> refs/remotes/origin/master

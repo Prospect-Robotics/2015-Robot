@@ -4,6 +4,7 @@ import org.usfirst.frc.team2813.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+
 public class IntakeOpen extends Command {
 	
 	double leftOpen = 1.0;

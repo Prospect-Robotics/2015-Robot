@@ -50,4 +50,3 @@ public class ElevatorIncUp extends Command {
 	protected void interrupted() {
 	}
 }
->>>>>>> refs/remotes/origin/master
