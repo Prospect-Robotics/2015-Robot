@@ -20,10 +20,10 @@ public class Elevator extends PIDSubsystem {
 
 	int counter = 0;
 
-	double leftUp = 1.0;
-	double leftDown = -1.0;
-	double rightUp = 1.0;
-	double rightDown = -1.0;
+	double leftUp = .8;
+	double leftDown = -.8;
+	double rightUp = -.8;
+	double rightDown = .8;
 
 	double encoder;
 

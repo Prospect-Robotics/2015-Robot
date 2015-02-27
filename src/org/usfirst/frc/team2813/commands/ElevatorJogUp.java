@@ -1,14 +1,16 @@
 package org.usfirst.frc.team2813.commands;
 
 import org.usfirst.frc.team2813.robot.Robot;
-import org.usfirst.frc.team2813.subsystems.Elevator;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ElevatorJogUp extends Elevator {
+public class ElevatorJogUp extends Command {
 
 	public ElevatorJogUp() {
+		requires(Robot.elevator);
 
 	}
 
@@ -18,13 +20,13 @@ public class ElevatorJogUp extends Elevator {
 	}
 
 	protected void execute() {
-		elevatorUp();
+		Robot.elevator.elevatorUp();
 		if (Robot.elevator.getMagnet()) {
 			Robot.elevator.addCounter();
 			if (Robot.elevator.getCounter() >= 4) {
 				Robot.elevator.elevatorStop();
-							}
-						}
+			}
+		}
 
 	}
 
@@ -33,11 +35,11 @@ public class ElevatorJogUp extends Elevator {
 	}
 
 	protected void end() {
-		elevatorStop();
+		Robot.elevator.elevatorStop();
 	}
 
 	protected void interrupted() {
-		elevatorStop();
+		Robot.elevator.elevatorStop();
 		// Enable Pid
 	}
 

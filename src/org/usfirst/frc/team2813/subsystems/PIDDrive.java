@@ -49,8 +49,8 @@ public class PIDDrive extends PIDSubsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
 
-        setDefaultCommand(new FODrive());
-        //setDefaultCommand(new PIDrotation());
+        //setDefaultCommand(new FODrive());
+        setDefaultCommand(new PIDrotation());
     }
     public double returnPIDInput() {
         return Robot.nav6.pidGet();

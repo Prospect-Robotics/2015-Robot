@@ -37,10 +37,10 @@ public class Robot extends IterativeRobot {
         nav6 = new Nav6();
         elevator = new Elevator();
         pIDDrive = new PIDDrive();
-        intakePivot = new IntakePivot();
-        carriage = new Carriage();
-        intakeRollers = new IntakeRollers();
-        compressor = new Compressor();
+        //intakePivot = new IntakePivot();
+        //carriage = new Carriage();
+        //intakeRollers = new IntakeRollers();
+        //compressor = new Compressor();
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be 
         // constructed yet. Thus, their requires() statements may grab null 
@@ -103,8 +103,6 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         nav6.displayNav6Data(true);
         Scheduler.getInstance().run();
-        SmartDashboard.putBoolean("MagSensor", elevator.getMagnet());
-        SmartDashboard.putInt("Counter", elevator.getCounter());
     }
 
     /**

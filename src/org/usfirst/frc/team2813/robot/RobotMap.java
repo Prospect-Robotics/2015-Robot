@@ -1,12 +1,17 @@
 package org.usfirst.frc.team2813.robot;
 
-import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 public class RobotMap {
@@ -40,8 +45,8 @@ public class RobotMap {
 		elevatorGet = new DigitalOutput(4);
 
 
-		intakePivotintakePivotLeft = new Victor(0);
-		intakePivotintakePivotRight = new Victor(3);
+		intakePivotintakePivotLeft = new Victor(7);
+		intakePivotintakePivotRight = new Victor(2);
 		LiveWindow.addActuator("IntakePivot", "intakePivotRight", (Victor) intakePivotintakePivotRight);
 		LiveWindow.addActuator("IntakePivot", "intakePivotLeft", (Victor) intakePivotintakePivotLeft);
 
@@ -54,18 +59,18 @@ public class RobotMap {
 		LiveWindow.addActuator("Carriage", "carriageSolenoid", carriagecarriageSolenoid);
 
 		intakeRollersintakeRollerLeft = new Victor(8);
-		intakeRollersintakeRollerRight = new Victor(9);
+		intakeRollersintakeRollerRight = new Victor(3);
 		LiveWindow.addActuator("IntakeRollers", "intakeRollerRight", (Victor) intakeRollersintakeRollerRight);
 		LiveWindow.addActuator("IntakeRollers", "intakeRollerLeft", (Victor) intakeRollersintakeRollerLeft);
 
 		compressor = new Compressor(0);
 
-		boolean isPractice = false;
+		boolean isPractice = true;
 		if (isPractice){
-			pIDDrivefrontLeft = new Talon(4);
-			pIDDrivefrontRight = new Talon(5);
-			pIDDrivebackLeft = new Talon(6);
-			pIDDrivebackRight = new Talon(7);
+			pIDDrivefrontLeft = new Talon(5);
+			pIDDrivefrontRight = new Talon(9);
+			pIDDrivebackLeft = new Talon(0);
+			pIDDrivebackRight = new Talon(4);
 			LiveWindow.addActuator("PIDDrive", "frontLeft", (Talon) pIDDrivefrontLeft);
 			LiveWindow.addActuator("PIDDrive", "frontRight", (Talon) pIDDrivefrontRight);
 			LiveWindow.addActuator("PIDDrive", "backLeft", (Talon) pIDDrivebackLeft);

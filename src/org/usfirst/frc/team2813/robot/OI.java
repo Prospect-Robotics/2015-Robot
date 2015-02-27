@@ -1,13 +1,11 @@
 package org.usfirst.frc.team2813.robot;
 
-import org.usfirst.frc.team2813.commands.CarriageForward;
-import org.usfirst.frc.team2813.commands.CarriageNoMove;
-import org.usfirst.frc.team2813.commands.CarriageReverse;
 import org.usfirst.frc.team2813.commands.ElevatorIncDown;
 import org.usfirst.frc.team2813.commands.ElevatorIncUp;
+import org.usfirst.frc.team2813.commands.ElevatorJogDown;
+import org.usfirst.frc.team2813.commands.ElevatorJogUp;
 import org.usfirst.frc.team2813.commands.IntakeClose;
 import org.usfirst.frc.team2813.commands.IntakeOpen;
-import org.usfirst.frc.team2813.commands.IntakeRolling;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -17,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
+
 public class OI {
 	// // CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
@@ -70,10 +69,8 @@ public class OI {
 		new JoystickButton(driver1, 6).whenPressed(new ElevatorIncUp());
 		new JoystickButton(driver1, 7).whenPressed(new IntakeOpen());
 		new JoystickButton(driver1, 8).whenPressed(new IntakeClose());
-		new JoystickButton(driver1, 9).whenPressed(new CarriageForward());
-		new JoystickButton(driver1, 10).whenPressed(new CarriageReverse());
-		new JoystickButton(driver1, 11).whenPressed(new CarriageNoMove());
-		new JoystickButton(driver1, 12).whenPressed(new IntakeRolling());
+		new JoystickButton(operator, 1).whileHeld(new ElevatorJogUp());
+		new JoystickButton(operator, 2).whileHeld(new ElevatorJogDown());
 		
 		
 		
