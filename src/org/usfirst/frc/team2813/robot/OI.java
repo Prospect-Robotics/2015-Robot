@@ -1,11 +1,6 @@
 package org.usfirst.frc.team2813.robot;
 
-import org.usfirst.frc.team2813.commands.ElevatorIncDown;
-import org.usfirst.frc.team2813.commands.ElevatorIncUp;
-import org.usfirst.frc.team2813.commands.ElevatorJogDown;
-import org.usfirst.frc.team2813.commands.ElevatorJogUp;
-import org.usfirst.frc.team2813.commands.IntakeClose;
-import org.usfirst.frc.team2813.commands.IntakeOpen;
+import org.usfirst.frc.team2813.commands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -71,6 +66,8 @@ public class OI {
 		new JoystickButton(driver1, 8).whenPressed(new IntakeClose());
 		new JoystickButton(operator, 1).whileHeld(new ElevatorJogUp());
 		new JoystickButton(operator, 2).whileHeld(new ElevatorJogDown());
+		new JoystickButton(operator, 3).whenPressed(new CarriageIn());
+		new JoystickButton(operator, 4).whenPressed(new CarriageOut());
 		
 		
 		

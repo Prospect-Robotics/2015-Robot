@@ -41,7 +41,7 @@ public class Elevator extends PIDSubsystem {
 	}
 
 	protected double returnPIDInput() {
-		return elevatorEncoder.pidGet();
+		return elevatorEncoder.getDistance();
 	}
 
 	protected void usePIDOutput(double output) {

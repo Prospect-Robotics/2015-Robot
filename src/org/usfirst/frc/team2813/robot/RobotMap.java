@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -21,7 +22,7 @@ public class RobotMap {
 	public static DigitalInput elevatorelevatorMagnet;
 	public static SpeedController intakePivotintakePivotLeft, intakePivotintakePivotRight;
 	public static AnalogPotentiometer intakePivotintakePotLeft, intakePivotintakePotRight;
-	public static DoubleSolenoid carriagecarriageSolenoid;
+	public static Solenoid carriagecarriageSolenoid;
 	public static SpeedController intakeRollersintakeRollerLeft, intakeRollersintakeRollerRight;
 	public static SpeedController pIDDrivefrontLeft, pIDDrivefrontRight, pIDDrivebackLeft, pIDDrivebackRight;
 	public static Compressor compressor;
@@ -55,7 +56,7 @@ public class RobotMap {
 		LiveWindow.addSensor("IntakePivot", "intakePotRight", intakePivotintakePotRight);
 		LiveWindow.addSensor("IntakePivot", "intakePotLeft", intakePivotintakePotLeft);
 
-		carriagecarriageSolenoid = new DoubleSolenoid(0, 0, 1);
+		carriagecarriageSolenoid = new Solenoid(0);
 		LiveWindow.addActuator("Carriage", "carriageSolenoid", carriagecarriageSolenoid);
 
 		intakeRollersintakeRollerLeft = new Victor(8);
