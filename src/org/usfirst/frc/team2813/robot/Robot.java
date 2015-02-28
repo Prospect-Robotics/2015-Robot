@@ -38,7 +38,7 @@ public class Robot extends IterativeRobot {
         elevator = new Elevator();
         pIDDrive = new PIDDrive();
         //intakePivot = new IntakePivot();
-        //carriage = new Carriage();
+        carriage = new Carriage();
         //intakeRollers = new IntakeRollers();
         //compressor = new Compressor();
         // OI must be constructed after subsystems. If the OI creates Commands

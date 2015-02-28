@@ -45,7 +45,7 @@ public class Elevator extends PIDSubsystem {
 	}
 
 	protected void usePIDOutput(double output) {
-		elevatorLeft.pidWrite(output);
+		elevatorLeft.pidWrite(-output);
 	}
 
 	public boolean getMagnet() {

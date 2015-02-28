@@ -37,7 +37,7 @@ public class RobotMap {
 		LiveWindow.addActuator("Elevator", "elevatorRight", (Talon) elevatorelevatorRight);
 		LiveWindow.addActuator("Elevator", "elevatorLeft", (Talon) elevatorelevatorLeft);
 
-		elevatorelevatorEncoder = new Encoder(0, 1, 2, false);
+		elevatorelevatorEncoder = new Encoder(1, 0, 2, false);
 		LiveWindow.addSensor("Elevator", "elevatorEncoder", elevatorelevatorEncoder);
 		elevatorelevatorEncoder.setDistancePerPulse(1.0);
 		elevatorelevatorEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
@@ -56,7 +56,7 @@ public class RobotMap {
 		LiveWindow.addSensor("IntakePivot", "intakePotRight", intakePivotintakePotRight);
 		LiveWindow.addSensor("IntakePivot", "intakePotLeft", intakePivotintakePotLeft);
 
-		carriagecarriageSolenoid = new Solenoid(0);
+		carriagecarriageSolenoid = new Solenoid(4);
 		LiveWindow.addActuator("Carriage", "carriageSolenoid", carriagecarriageSolenoid);
 
 		intakeRollersintakeRollerLeft = new Victor(8);
