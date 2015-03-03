@@ -2,6 +2,7 @@ package org.usfirst.frc.team2813.robot;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -36,8 +37,9 @@ public class RobotMap {
 		elevatorelevatorRight = new Talon(1);
 		LiveWindow.addActuator("Elevator", "elevatorRight", (Talon) elevatorelevatorRight);
 		LiveWindow.addActuator("Elevator", "elevatorLeft", (Talon) elevatorelevatorLeft);
-
-		elevatorelevatorEncoder = new Encoder(1, 0, 2, false);
+		
+		elevatorelevatorEncoder = new Encoder(1, 0, false, EncodingType.k4X);
+		//elevatorelevatorEncoder = new Encoder(1, 0, 2, false);
 		LiveWindow.addSensor("Elevator", "elevatorEncoder", elevatorelevatorEncoder);
 		elevatorelevatorEncoder.setDistancePerPulse(1.0);
 		elevatorelevatorEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
