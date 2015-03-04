@@ -4,15 +4,13 @@ package org.usfirst.frc.team2813.subsystems;
  * Created by Timothy on 2/11/2015.
  */
 
-import edu.wpi.first.wpilibj.SerialPort;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2813.IMU.IMU;
 
-import org.usfirst.frc.team2813.robot.RobotMap;
-
+import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Nav6 extends Subsystem {
     IMU imu;

@@ -24,7 +24,8 @@ public class Elevator extends PIDSubsystem {
 	double leftDown = -.8;
 	double rightUp = -.8;
 	double rightDown = .8;
-
+	
+	double encoderMax;
 	double encoder;
 
 	public Elevator() {
@@ -46,6 +47,7 @@ public class Elevator extends PIDSubsystem {
 
 	protected void usePIDOutput(double output) {
 		elevatorLeft.pidWrite(-output);
+		elevatorRight.pidWrite(output);
 	}
 
 	public boolean getMagnet() {
@@ -94,6 +96,16 @@ public class Elevator extends PIDSubsystem {
 		elevatorRight.set(0.0);
 	}
 
+	public void elevatorSet(double speed, String direction) {
+		if (direction == "up") {
+			elevatorLeft.set(speed);
+			elevatorRight.set(-speed);
+		}
+		if (direction == "down") {
+			elevatorLeft.set(-speed);
+			elevatorRight.set(speed);
+		}
+	}
 	public void triggerElevatorPid() {
 		// get encoder insert value into encoder
 		elevatorStop();
@@ -103,5 +115,9 @@ public class Elevator extends PIDSubsystem {
 	}
 	public double returnEncoder(){
 		return elevatorEncoder.pidGet();
+	}
+	
+	public void resetEncoder() {
+		elevatorEncoder.reset();
 	}
 }
