@@ -17,19 +17,16 @@ public class PIDrotation extends Command {
 	boolean trigger = false; // placeholder for threshold or button or something
 
 	public PIDrotation() {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
+		
 		requires(Robot.pIDDrive);
 	}
 
-	// Called just before this Command runs the first time
 	protected void initialize() {
 		Robot.pIDDrive.disable();
 		Robot.pIDDrive.setSetpoint(Robot.nav6.pidGet()); // Set setpoint as current position
 		Robot.pIDDrive.enable();
 	}
 
-	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		SmartDashboard.putBoolean("Threshold", inthreshold(Robot.oi.driver2.getTwist(), .2));
 
@@ -62,17 +59,13 @@ public class PIDrotation extends Command {
 		Robot.pIDDrive.mecanumCartesian(x, y, rotation, gyroAngle);
 	}
 
-	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		return false;
 	}
 
-	// Called once after isFinished returns true
 	protected void end() {
 	}
 
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
 	protected void interrupted() {
 	}
 

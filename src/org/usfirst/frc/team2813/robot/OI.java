@@ -1,6 +1,13 @@
 package org.usfirst.frc.team2813.robot;
 
-import org.usfirst.frc.team2813.commands.*;
+import org.usfirst.frc.team2813.commands.CarriageIn;
+import org.usfirst.frc.team2813.commands.CarriageOut;
+import org.usfirst.frc.team2813.commands.ElevatorIncDown;
+import org.usfirst.frc.team2813.commands.ElevatorIncUp;
+import org.usfirst.frc.team2813.commands.ElevatorJogDown;
+import org.usfirst.frc.team2813.commands.ElevatorJogUp;
+import org.usfirst.frc.team2813.commands.RollerIn;
+import org.usfirst.frc.team2813.commands.RollerOut;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -62,13 +69,12 @@ public class OI {
 		driver1 = new Joystick(0);
 
 		new JoystickButton(driver1, 6).whenPressed(new ElevatorIncUp());
-		new JoystickButton(driver1, 7).whenPressed(new IntakeOpen());
-		new JoystickButton(driver1, 8).whenPressed(new IntakeClose());
-		new JoystickButton(operator, 1).whileHeld(new ElevatorJogUp());
-		new JoystickButton(operator, 2).whileHeld(new ElevatorJogDown());
+		new JoystickButton(operator, 5).whileHeld(new ElevatorJogUp());
+		new JoystickButton(operator, 1).whileHeld(new ElevatorJogDown());
 		new JoystickButton(operator, 3).whenPressed(new CarriageIn());
 		new JoystickButton(operator, 4).whenPressed(new CarriageOut());
-		
+		new JoystickButton(operator, 6).whileHeld(new RollerIn());
+		new JoystickButton(operator, 2).whileHeld(new RollerOut());
 		
 		
 

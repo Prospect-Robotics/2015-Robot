@@ -23,10 +23,12 @@ public class Robot extends IterativeRobot {
     public static Elevator elevator;
     public static Nav6 nav6;
     public static PIDDrive pIDDrive;
-    public static IntakePivot intakePivot;;
+    public static IntakePivotRight intakePivotRight;
+    public static IntakePivotLeft intakePivotLeft;
     public static Carriage carriage;
     public static IntakeRollers intakeRollers;
     public static Compressor compressor;
+    public static IntakePivotIntegrated intakePivotIntegrated;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -37,9 +39,11 @@ public class Robot extends IterativeRobot {
         nav6 = new Nav6();
         elevator = new Elevator();
         pIDDrive = new PIDDrive();
-        //intakePivot = new IntakePivot();
+        intakePivotRight = new IntakePivotRight();
+        intakePivotLeft= new IntakePivotLeft();
         carriage = new Carriage();
-        //intakeRollers = new IntakeRollers();
+        intakeRollers = new IntakeRollers();
+        intakePivotIntegrated = new IntakePivotIntegrated();
         //compressor = new Compressor();
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be 

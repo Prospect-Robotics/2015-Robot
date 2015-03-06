@@ -47,8 +47,8 @@ public class RobotMap {
 		elevatorGet = new DigitalOutput(4);
 
 
-		intakePivotintakePivotLeft = new Victor(7);
-		intakePivotintakePivotRight = new Victor(2);
+		intakePivotintakePivotLeft = new Victor(8);
+		intakePivotintakePivotRight = new Victor(7);
 		LiveWindow.addActuator("IntakePivot", "intakePivotRight", (Victor) intakePivotintakePivotRight);
 		LiveWindow.addActuator("IntakePivot", "intakePivotLeft", (Victor) intakePivotintakePivotLeft);
 
@@ -60,8 +60,8 @@ public class RobotMap {
 		carriagecarriageSolenoid = new Solenoid(4);
 		LiveWindow.addActuator("Carriage", "carriageSolenoid", carriagecarriageSolenoid);
 
-		intakeRollersintakeRollerLeft = new Victor(8);
-		intakeRollersintakeRollerRight = new Victor(3);
+		intakeRollersintakeRollerLeft = new Victor(3);
+		intakeRollersintakeRollerRight = new Victor(2);
 		LiveWindow.addActuator("IntakeRollers", "intakeRollerRight", (Victor) intakeRollersintakeRollerRight);
 		LiveWindow.addActuator("IntakeRollers", "intakeRollerLeft", (Victor) intakeRollersintakeRollerLeft);
 

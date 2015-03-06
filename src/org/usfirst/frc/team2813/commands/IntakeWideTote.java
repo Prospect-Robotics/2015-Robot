@@ -1,33 +1,29 @@
 package org.usfirst.frc.team2813.commands;
 
 import org.usfirst.frc.team2813.robot.Robot;
-import org.usfirst.frc.team2813.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ElevatorHome extends Command {
-
-	public ElevatorHome() {
-
-		requires(Robot.elevator);
+public class IntakeWideTote extends Command {
+	
+	double leftValue = 0;
+	double rightValue = 0;
+	
+    public IntakeWideTote() {
+    	requires(Robot.intakePivotRight);
+		requires(Robot.intakePivotLeft);
 	}
 
 	protected void initialize() {
-		Robot.elevator.disable();
-		Robot.elevator.elevatorSet(0.1, "down");
-		while(true) {
-			if(!RobotMap.elevatorelevatorMagnet.get())
-				break;
-		}
-		Robot.elevator.resetEncoder();
+		Robot.intakePivotIntegrated.IntakePivotEnable();
 		
 	}
 
 	protected void execute() {
-		
+		Robot.intakePivotIntegrated.intakePivotSet(leftValue, rightValue);
 	}
 
 	protected boolean isFinished() {
