@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class IntakeDropTote extends Command {
 	
 	double leftValue = 0;
-	double rightValue = 0;
+	double rightValue = .5;
 
     public IntakeDropTote() {
     	requires(Robot.intakePivotRight);

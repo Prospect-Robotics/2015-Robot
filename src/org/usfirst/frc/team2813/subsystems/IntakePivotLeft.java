@@ -17,10 +17,10 @@ public class IntakePivotLeft extends PIDSubsystem {
 
     // Initialize your subsystem here
     public IntakePivotLeft() {
-    	 super("IntakePivotRight", 1.0, 0.0, 0.0);
+    	 super("IntakePivotRight", 6, 0.001, 7.0);
          setAbsoluteTolerance(0.2);
          getPIDController().setContinuous(false);
-         LiveWindow.addActuator("IntakePivot", "PIDSubsystem Controller", getPIDController());
+         LiveWindow.addActuator("IntakePivotLeft", "PIDLAND SWAGCONTROLLER", getPIDController());
 
     }
     
@@ -33,7 +33,7 @@ public class IntakePivotLeft extends PIDSubsystem {
     }
     
     protected void usePIDOutput(double output) {
-        intakePivotLeft.pidWrite(output);
+        intakePivotLeft.pidWrite(-output);
 
     }
 }

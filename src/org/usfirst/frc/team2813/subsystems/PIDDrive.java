@@ -2,7 +2,7 @@ package org.usfirst.frc.team2813.subsystems;
 
 
 
-import org.usfirst.frc.team2813.commands.PIDrotation;
+import org.usfirst.frc.team2813.commands.FODrive;
 import org.usfirst.frc.team2813.robot.Robot;
 import org.usfirst.frc.team2813.robot.RobotMap;
 
@@ -47,8 +47,8 @@ public class PIDDrive extends PIDSubsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
 
-        //setDefaultCommand(new FODrive());
-        setDefaultCommand(new PIDrotation());
+        setDefaultCommand(new FODrive());
+        //setDefaultCommand(new PIDrotation());
     }
     public double returnPIDInput() {
         return Robot.nav6.pidGet();

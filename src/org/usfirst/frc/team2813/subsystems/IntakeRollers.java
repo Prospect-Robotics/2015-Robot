@@ -49,5 +49,10 @@ public class IntakeRollers extends Subsystem {
     	intakeRollerLeft.set(0);
     	intakeRollerRight.set(0);
     }
+    public void intakeRotate() {
+    	intakeRollerLeft.set(1.0);
+    	intakeRollerRight.set(1.0);
+    }
+    
  }
 

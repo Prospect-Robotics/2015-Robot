@@ -17,17 +17,27 @@ public class ElevatorHome extends Command {
 
 	protected void initialize() {
 		Robot.elevator.disable();
-		Robot.elevator.elevatorSet(0.1, "down");
-		while(true) {
-			if(!RobotMap.elevatorelevatorMagnet.get())
+		Robot.elevator.elevatorSet(0.4, "down");
+		while (true) {
+			if (!RobotMap.elevatorelevatorMagnet.get())
 				break;
 		}
 		Robot.elevator.resetEncoder();
-		
+		Robot.elevator.elevatorSet(0.4, "up");
+		while (true) {
+			if (Robot.elevator.maxHeight()) {
+				Robot.elevator.elevatorStop();
+				break;
+			}
+		Robot.elevator.setMaxValue();
+		}
+		Robot.elevator.enable();
+		Robot.elevator.setSetpoint(Robot.elevator.getEncoderValue() / 2);
+
 	}
 
 	protected void execute() {
-		
+
 	}
 
 	protected boolean isFinished() {

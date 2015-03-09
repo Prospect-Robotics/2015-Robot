@@ -9,29 +9,31 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ElevatorJogUp extends Command {
 
+	boolean done;
+
 	public ElevatorJogUp() {
 		requires(Robot.elevator);
 
 	}
 
 	protected void initialize() {
-		// disable PID
+		Robot.elevator.disable();
+
+		done = false;
 
 	}
 
 	protected void execute() {
-		Robot.elevator.elevatorUp();
-		if (Robot.elevator.getMagnet()) {
-			Robot.elevator.addCounter();
-			if (Robot.elevator.getCounter() >= 4) {
-				Robot.elevator.elevatorStop();
-			}
+		if (Robot.elevator.maxHeight()) {
+			Robot.elevator.elevatorStop();
+			done = true;
+		} else {
+			Robot.elevator.elevatorUp();
 		}
-
 	}
 
 	protected boolean isFinished() {
-		return false;
+		return done;
 	}
 
 	protected void end() {

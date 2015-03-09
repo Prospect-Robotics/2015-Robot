@@ -27,10 +27,10 @@ public class IntakePivotRight extends PIDSubsystem {
     		
 
     public IntakePivotRight() {
-        super("IntakePivotRight", 1.0, 0.0, 0.0);
+        super("IntakePivotRight", 6, 0.0, 0.0);
         setAbsoluteTolerance(0.2);
         getPIDController().setContinuous(false);
-        LiveWindow.addActuator("IntakePivot", "PIDSubsystem Controller", getPIDController());
+        LiveWindow.addActuator("IntakePivotRight", "SWAGPID", getPIDController());
 
     }
     

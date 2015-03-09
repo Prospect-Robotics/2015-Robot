@@ -14,18 +14,13 @@ public class ElevatorJogDown extends Command {
 	}
 
 	protected void initialize() {
-		// disable PID
+		Robot.elevator.disable();
+
 
 	}
 
 	protected void execute() {
 		Robot.elevator.elevatorDown();
-		if (Robot.elevator.getMagnet()) {
-			Robot.elevator.minusCounter();
-			if (Robot.elevator.getCounter() <= 0) {
-				Robot.elevator.elevatorStop();
-			}
-		}
 	}
 
 	protected boolean isFinished() {

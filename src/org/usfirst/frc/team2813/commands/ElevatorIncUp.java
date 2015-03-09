@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2813.commands;
 
 import org.usfirst.frc.team2813.robot.Robot;
-import org.usfirst.frc.team2813.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -10,30 +9,28 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ElevatorIncUp extends Command {
 
-	boolean done = false;
+	boolean done;
 	boolean run = true;
+	
+	double value = 200;
 
 	public ElevatorIncUp() {
 		requires(Robot.elevator);
 	}
 
 	protected void initialize() {
-		//disable the PID
-		if (Robot.elevator.counterMax()) {
-			run = false;
-		} else {
-			Robot.elevator.elevatorUp();
-		}
-			
+		done=false;
+		Robot.elevator.disable();
+
 	}
 
 	protected void execute() {
-		if (!run) {
+		if (Robot.elevator.maxHeight()) {
 			done = true;
-		} else if (!RobotMap.elevatorelevatorMagnet.get()) {
-			Robot.elevator.triggerElevatorPid();
-			Robot.elevator.addCounter();
-			done = true;
+		}
+		else {
+			Robot.elevator.enable();
+			Robot.elevator.setSetpoint(value);
 		}
 	}
 

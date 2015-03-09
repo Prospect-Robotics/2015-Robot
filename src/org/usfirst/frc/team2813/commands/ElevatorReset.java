@@ -7,21 +7,21 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ElevatorIncDown extends Command {
+public class ElevatorReset extends Command {
+	
+	boolean done;
 
-	boolean done = false;
-	boolean run = true;
-
-	public ElevatorIncDown() {
-
+	public ElevatorReset() {
 		requires(Robot.elevator);
 	}
 
 	protected void initialize() {
+		done = false;
+		Robot.elevator.resetEncoder();
+		done = true;
 	}
 
 	protected void execute() {
-
 	}
 
 	protected boolean isFinished() {
@@ -29,7 +29,6 @@ public class ElevatorIncDown extends Command {
 	}
 
 	protected void end() {
-		done = false;
 	}
 
 	protected void interrupted() {

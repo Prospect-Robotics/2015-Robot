@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2813.subsystems;
 
-import org.usfirst.frc.team2813.commands.ElevatorStay;
+import org.usfirst.frc.team2813.commands.ElevatorDefault;
 import org.usfirst.frc.team2813.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -17,19 +17,22 @@ public class Elevator extends PIDSubsystem {
 	SpeedController elevatorRight = RobotMap.elevatorelevatorRight;
 	Encoder elevatorEncoder = RobotMap.elevatorelevatorEncoder;
 	DigitalInput elevatorMagnet = RobotMap.elevatorelevatorMagnet;
+	DigitalInput elevatorLimitSwitch = RobotMap.elevatorelevatorLimitSwitch;
 
 	int counter = 0;
+	
+	double maxValue;
 
-	double leftUp = -.8;
-	double leftDown = .8;
-	double rightUp = .8;
-	double rightDown = -.8;
+	double leftUp = -1.0;
+	double leftDown = 1.0;
+	double rightUp = 1.0;
+	double rightDown = -1.0;
 	
 	double encoderMax;
 	double encoder;
 
 	public Elevator() {
-		super("Elevator", 1.0, 0.0, 0.0);
+		super("Elevator", .020, 0.015, 0.020);
 		setAbsoluteTolerance(0.2);
 		getPIDController().setContinuous(false);
 		LiveWindow.addActuator("Elevator", "PIDSubsystem Controller",
@@ -38,7 +41,7 @@ public class Elevator extends PIDSubsystem {
 	}
 
 	public void initDefaultCommand() {
-		setDefaultCommand(new ElevatorStay());
+		setDefaultCommand(new ElevatorDefault());
 	}
 
 	protected double returnPIDInput() {
@@ -48,37 +51,6 @@ public class Elevator extends PIDSubsystem {
 	protected void usePIDOutput(double output) {
 		elevatorLeft.pidWrite(-output);
 		elevatorRight.pidWrite(output);
-	}
-
-	public boolean getMagnet() {
-		
-		if (RobotMap.elevatorelevatorMagnet.get())
-			return false;
-		else
-			return true;
-	}
-
-	public int getCounter() {
-		return counter;
-	}
-
-	public void counterAddCustom(int add) {
-		counter += add;
-	}
-
-	public void addCounter() {
-		counter++;
-	}
-
-	public void minusCounter() {
-		counter--;
-	}
-
-	public boolean counterMax() {
-		if (counter == 4)
-			return true;
-		else
-			return false;
 	}
 
 	public void elevatorUp() {
@@ -98,13 +70,17 @@ public class Elevator extends PIDSubsystem {
 
 	public void elevatorSet(double speed, String direction) {
 		if (direction == "up") {
-			elevatorLeft.set(speed);
-			elevatorRight.set(-speed);
-		}
-		if (direction == "down") {
 			elevatorLeft.set(-speed);
 			elevatorRight.set(speed);
 		}
+		if (direction == "down") {
+			elevatorLeft.set(speed);
+			elevatorRight.set(-speed);
+		}
+	}
+	
+	public boolean atBottom() {
+		return RobotMap.elevatorelevatorMagnet.get();
 	}
 	public void triggerElevatorPid() {
 		// get encoder insert value into encoder
@@ -120,4 +96,17 @@ public class Elevator extends PIDSubsystem {
 	public void resetEncoder() {
 		elevatorEncoder.reset();
 	}
+	
+	public boolean maxHeight() {
+		return elevatorLimitSwitch.get();
+	}
+	
+	public void setMaxValue() {
+		maxValue = elevatorEncoder.getDistance();
+	}
+	
+	public double getEncoderValue() {
+		return elevatorEncoder.getDistance();
+	}
+	
 }

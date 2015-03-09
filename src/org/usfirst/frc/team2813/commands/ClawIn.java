@@ -7,10 +7,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CarriageOut extends Command {
+public class ClawIn extends Command {
 
     boolean done = false;
-    public CarriageOut() {
+    public ClawIn() {
         requires(Robot.carriage);
     }
 
@@ -18,7 +18,7 @@ public class CarriageOut extends Command {
     }
 
     protected void execute() {
-        Robot.carriage.setTrue();
+        Robot.carriage.setFalse();
         done = true;
     }
 

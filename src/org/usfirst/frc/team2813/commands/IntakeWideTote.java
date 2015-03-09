@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class IntakeWideTote extends Command {
 	
-	double leftValue = 0;
-	double rightValue = 0;
+	double leftValue = 0.133;
+	double rightValue = 0.376;
 	
     public IntakeWideTote() {
     	requires(Robot.intakePivotRight);
