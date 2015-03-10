@@ -32,4 +32,8 @@ public class ClawOut extends Command {
 
     protected void interrupted() {
     }
+    
+    public static void ClawOut() {
+    	Robot.carriage.setTrue();
+    }
 }

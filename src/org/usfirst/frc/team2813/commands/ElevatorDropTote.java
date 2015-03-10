@@ -21,6 +21,7 @@ public class ElevatorDropTote extends Command {
 	}
 
 	protected void initialize() {
+		Robot.elevator.disable();
 		done = false;
 		value = Robot.elevator.getEncoderValue() - 150;
 		if (Robot.elevator.getEncoderValue() <= 150)

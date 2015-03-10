@@ -13,6 +13,7 @@ import org.usfirst.frc.team2813.commands.ElevatorReset;
 import org.usfirst.frc.team2813.commands.IntakeDropTote;
 import org.usfirst.frc.team2813.commands.IntakeLongTote;
 import org.usfirst.frc.team2813.commands.IntakeWideTote;
+import org.usfirst.frc.team2813.commands.PickupRoutine;
 import org.usfirst.frc.team2813.commands.RollerIn;
 import org.usfirst.frc.team2813.commands.RollerOut;
 import org.usfirst.frc.team2813.commands.RollerRotate;
@@ -74,7 +75,8 @@ public class OI {
 		driver2 = new Joystick(1);
 
 		driver1 = new Joystick(0);
-
+		
+		new JoystickButton(driver1, 10).whenPressed(new PickupRoutine());
 		new JoystickButton(driver1, 6).whileHeld(new ElevatorJogUp());
 		new JoystickButton(driver1, 7).whileHeld(new ElevatorJogDown());
 		new JoystickButton(driver1, 8).whenPressed(new ElevatorReset());

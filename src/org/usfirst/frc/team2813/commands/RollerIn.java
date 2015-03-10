@@ -30,7 +30,6 @@ public class RollerIn extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.intakeRollers.rollersStop();
     }
 
     // Called when another command which requires one or more of the same

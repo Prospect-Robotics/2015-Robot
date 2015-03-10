@@ -32,4 +32,8 @@ public class ClawIn extends Command {
 
     protected void interrupted() {
     }
+    
+    public static void ClawIn() {
+        Robot.carriage.setFalse();
+    }
 }
