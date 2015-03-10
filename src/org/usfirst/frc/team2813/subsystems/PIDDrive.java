@@ -75,4 +75,7 @@ public class PIDDrive extends PIDSubsystem {
         setSetpoint(Robot.nav6.pidGet()); //Set setpoint as current position
         enable();
     }
+    public void tankDrive (double left, double right) {
+        drive.tankDrive(left, right);
+    }
 }

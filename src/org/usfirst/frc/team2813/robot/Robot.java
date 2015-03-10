@@ -122,7 +122,10 @@ public class Robot extends IterativeRobot {
         nav6.displayNav6Data(true);
         Scheduler.getInstance().run();
         SmartDashboard.putNumber("Encoder", Robot.elevator.getEncoderValue());
-
+        if (Robot.oi.getdriver1().getRawButton(23)) {
+            //Will only reset if it is not calibrating
+            Robot.nav6.resetNav6();
+        }
     }
 
     /**

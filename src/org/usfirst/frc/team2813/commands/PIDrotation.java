@@ -13,6 +13,7 @@ public class PIDrotation extends Command {
 	double rotation;
 	float gyroAngle;
 	boolean newSetpoint;
+	boolean PID;
 
 	boolean trigger = false; // placeholder for threshold or button or something
 
@@ -25,38 +26,44 @@ public class PIDrotation extends Command {
 		Robot.pIDDrive.disable();
 		Robot.pIDDrive.setSetpoint(Robot.nav6.pidGet()); // Set setpoint as current position
 		Robot.pIDDrive.enable();
+		PID = false;
 	}
 
 	protected void execute() {
-		SmartDashboard.putBoolean("Threshold", inthreshold(Robot.oi.driver2.getTwist(), .2));
+		if (Robot.oi.getdriver1().getRawButton(25)) {
+			SmartDashboard.putBoolean("Threshold", inthreshold(Robot.oi.driver2.getTwist(), .2));
 
-		//Determine Rotation for Drive, with PID rotation correction
-		// if (inthreshold(Robot.oi.joystick2.getTwist(), .2)) {
-		if (Robot.oi.driver2.getTrigger()) {
-			Robot.pIDDrive.disable();
-			rotation = Robot.oi.driver2.getTwist();
-			Robot.pIDDrive.setSetpoint(Robot.nav6.pidGet()); // Set setpoint as current position
-		} else {
-			Robot.pIDDrive.enable();
-			rotation = Robot.pIDDrive.getPIDout();
-		}
-		//Determine x and y for Drive
-		if (Robot.oi.driver1.getRawButton(1)) {
-			x = Robot.oi.driver1.getX() / 2;
-			y = Robot.oi.driver1.getY() / 4;
-		} else {
-			x = Robot.oi.driver1.getX();
-			y = Robot.oi.driver1.getY();
-		}
-		//Determine Gyro Angle for Field Oriented Drive
-		gyroAngle = Robot.nav6.getYaw();
+			//Determine Rotation for Drive, with PID rotation correction
+			// if (inthreshold(Robot.oi.joystick2.getTwist(), .2)) {
+			if (Robot.oi.driver2.getTrigger()) {
+				Robot.pIDDrive.disable();
+				rotation = Robot.oi.driver2.getTwist();
+				//Robot.pIDDrive.setSetpoint(joyAddToSetPoint(Robot.oi.driver2.getTwist()));
+				Robot.pIDDrive.setSetpoint(Robot.nav6.pidGet()); // Set setpoint as current position
+			} else {
+				Robot.pIDDrive.enable();
+				rotation = Robot.pIDDrive.getPIDout();
+			}
+			//Determine x and y for Drive
+			if (Robot.oi.driver1.getRawButton(1)) {
+				x = Robot.oi.driver1.getX() / 2;
+				y = Robot.oi.driver1.getY() / 4;
+			} else {
+				x = Robot.oi.driver1.getX();
+				y = Robot.oi.driver1.getY();
+			}
+			//Determine Gyro Angle for Field Oriented Drive
+			gyroAngle = Robot.nav6.getYaw();
 
+			Robot.pIDDrive.mecanumCartesian(x, y, rotation, gyroAngle);
+		} else {
+			Robot.pIDDrive.tankDrive(Robot.oi.driver1.getY(), Robot.oi.driver2.getY());
+		}
 		SmartDashboard.putNumber("Setpoint", Robot.pIDDrive.getSetpoint());
 		SmartDashboard.putNumber("z", Robot.oi.driver2.getTwist());
 		SmartDashboard.putNumber("Rotation", rotation);
 		SmartDashboard.putNumber("x", x);
 		SmartDashboard.putNumber("y", y);
-		Robot.pIDDrive.mecanumCartesian(x, y, rotation, gyroAngle);
 	}
 
 	protected boolean isFinished() {
