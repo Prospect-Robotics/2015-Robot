@@ -25,14 +25,18 @@ public class FODrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        rotation = Robot.oi.getdriver2().getTwist();
-        gyroAngle = Robot.nav6.getYaw();
-        x = Robot.oi.getdriver1().getX();
-        y = Robot.oi.getdriver1().getY();
-        SmartDashboard.putNumber("x", x);
-        SmartDashboard.putNumber("y", y);
-        SmartDashboard.putNumber("z", rotation);
-        Robot.pIDDrive.mecanumCartesian(x, y, rotation, gyroAngle);
+        if (Robot.oi.getdriver1().getRawButton(25)) {
+            rotation = Robot.oi.getdriver2().getTwist();
+            gyroAngle = Robot.nav6.getYaw();
+            x = Robot.oi.getdriver1().getX();
+            y = Robot.oi.getdriver1().getY();
+            SmartDashboard.putNumber("x", x);
+            SmartDashboard.putNumber("y", y);
+            SmartDashboard.putNumber("z", rotation);
+            Robot.pIDDrive.mecanumCartesian(x, y, rotation, gyroAngle);
+        } else {
+            Robot.pIDDrive.tankDrive(Robot.oi.driver1.getY(), Robot.oi.driver2.getY());
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
