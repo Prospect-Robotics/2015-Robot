@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2813.robot;
 
-import org.usfirst.frc.team2813.commands.ClawIn;
+import org.usfirst.frc.team2813.commands.Claw;
 import org.usfirst.frc.team2813.commands.ClawOut;
 import org.usfirst.frc.team2813.commands.ElevatorDropTote;
 import org.usfirst.frc.team2813.commands.ElevatorIncDown;
@@ -11,12 +11,14 @@ import org.usfirst.frc.team2813.commands.ElevatorOneTote;
 import org.usfirst.frc.team2813.commands.ElevatorPickup;
 import org.usfirst.frc.team2813.commands.ElevatorReset;
 import org.usfirst.frc.team2813.commands.IntakeDropTote;
-import org.usfirst.frc.team2813.commands.IntakeLongTote;
+import org.usfirst.frc.team2813.commands.IntakeLongWide;
 import org.usfirst.frc.team2813.commands.IntakeWideTote;
 import org.usfirst.frc.team2813.commands.PickupRoutine;
 import org.usfirst.frc.team2813.commands.RollerIn;
 import org.usfirst.frc.team2813.commands.RollerOut;
 import org.usfirst.frc.team2813.commands.RollerRotate;
+import org.usfirst.frc.team2813.commands.TrashcanGrabberDown;
+import org.usfirst.frc.team2813.commands.TrashcanGrabberUp;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -76,14 +78,16 @@ public class OI {
 
 		driver1 = new Joystick(0);
 		
+		new JoystickButton(driver1, 3).whenPressed(new TrashcanGrabberDown());
+		new JoystickButton(driver1, 2).whenPressed(new TrashcanGrabberUp());
 		new JoystickButton(driver1, 10).whenPressed(new PickupRoutine());
 		new JoystickButton(driver1, 6).whileHeld(new ElevatorJogUp());
 		new JoystickButton(driver1, 7).whileHeld(new ElevatorJogDown());
 		new JoystickButton(driver1, 8).whenPressed(new ElevatorReset());
-		new JoystickButton(operator, 3).whenPressed(new ClawIn());
+		new JoystickButton(operator, 3).whenPressed(new Claw());
 		new JoystickButton(operator, 7).whenPressed(new ClawOut());
-		new JoystickButton(operator, 4).whenPressed(new IntakeLongTote());
-		new JoystickButton(operator, 8).whenPressed(new IntakeWideTote());
+		new JoystickButton(operator, 4).whenPressed(new IntakeLongWide());
+		new JoystickButton(operator, 8).whenPressed(new IntakeDropTote());
 		new JoystickButton(operator, 6).whileHeld(new RollerIn());
 		new JoystickButton(operator, 2).whileHeld(new RollerOut());
 		new JoystickButton(operator, 10).whileHeld(new RollerRotate());

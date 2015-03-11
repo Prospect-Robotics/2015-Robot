@@ -32,4 +32,8 @@ public class Carriage extends Subsystem {
 	public void setFalse() {
 		carriageSolenoid.set(false);
 	}
+	
+	public boolean getState() {
+		return carriageSolenoid.get();
+	}
 }

@@ -7,19 +7,26 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ClawIn extends Command {
+public class Claw extends Command {
 
     boolean done = false;
-    public ClawIn() {
+    public Claw() {
         requires(Robot.carriage);
     }
 
     protected void initialize() {
+    	if (Robot.carriage.getState()) {
+            Robot.carriage.setFalse();
+            done = true;
+    	}
+    	else {
+    		Robot.carriage.setTrue();
+    		done = true;
+    	}
     }
 
     protected void execute() {
-        Robot.carriage.setFalse();
-        done = true;
+    	
     }
 
     protected boolean isFinished() {
@@ -34,6 +41,6 @@ public class ClawIn extends Command {
     }
     
     public static void ClawIn() {
-    	Robot.carriage.setTrue();
+        Robot.carriage.setFalse();
     }
 }

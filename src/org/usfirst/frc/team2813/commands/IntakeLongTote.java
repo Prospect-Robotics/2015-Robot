@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class IntakeLongTote extends Command {
 	
-	double leftValue = 0.266;
-	double rightValue = 0.236;
+	static double leftValue = 0.140;
+	static double rightValue = 0.185;
 
 	public IntakeLongTote() {
 		requires(Robot.intakePivotRight);
@@ -31,5 +31,10 @@ public class IntakeLongTote extends Command {
 	}
 
 	protected void interrupted() {
+	}
+	
+	public static void IntakeLong() {
+		Robot.intakePivotIntegrated.intakePivotSet(leftValue, rightValue);
+
 	}
 }

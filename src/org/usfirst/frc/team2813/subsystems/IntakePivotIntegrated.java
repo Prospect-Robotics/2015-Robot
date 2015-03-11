@@ -3,7 +3,9 @@ package org.usfirst.frc.team2813.subsystems;
 import org.usfirst.frc.team2813.robot.Robot;
 
 public class IntakePivotIntegrated {
-
+	
+	public int state;
+	
 	public void intakePivotSet(double leftValue, double rightValue) {
 		Robot.intakePivotLeft.setSetpoint(leftValue);
 		Robot.intakePivotRight.setSetpoint(rightValue);

@@ -16,8 +16,8 @@ public class ReachedSetpoint {
 	}
 	
 	protected static boolean reached() {
-		if (Robot.elevator.getEncoderValue() >= value - 2
-				&& Robot.elevator.getEncoderValue() <= value + 2) {
+		if (Robot.elevator.getEncoderValue() >= value - 4
+				&& Robot.elevator.getEncoderValue() <= value + 4) {
 			return true;
 		} else {
 			return false;

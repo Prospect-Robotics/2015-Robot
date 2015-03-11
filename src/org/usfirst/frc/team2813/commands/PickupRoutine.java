@@ -21,21 +21,16 @@ public class PickupRoutine extends Command {
 	protected void initialize() {
 		Robot.elevator.enable();
 		Robot.elevator.setSetpoint(ElevatorOneTote.value);
-		ReachedSetpoint.checkSetpoint(ElevatorOneTote.value);
 		Robot.elevator.setSetpoint(Robot.elevator.getEncoderValue()
-				+ ElevatorDropTote.value);
-		ReachedSetpoint.checkSetpoint(Robot.elevator.getEncoderValue()
 				+ ElevatorDropTote.value);
 		delay(0.7);
 		ClawOut.ClawOut();
-		delay(0.4);
+		delay(0.5);
 		Robot.elevator.setSetpoint(ElevatorPickup.value);
-		ReachedSetpoint.checkSetpoint(ElevatorPickup.value);
-		delay(0.7);
+		delay(1.0);
 		ClawIn.ClawIn();
-		delay(0.4);
+		delay(0.5);
 		Robot.elevator.setSetpoint(ElevatorGround.value);
-		ReachedSetpoint.checkSetpoint(ElevatorGround.value);
 
 	}
 

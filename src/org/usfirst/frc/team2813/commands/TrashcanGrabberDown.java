@@ -7,33 +7,26 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ClawIn extends Command {
+public class TrashcanGrabberDown extends Command {
 
-    boolean done = false;
-    public ClawIn() {
-        requires(Robot.carriage);
+    public TrashcanGrabberDown() {
+       requires (Robot.trashcanGrabber);
     }
 
     protected void initialize() {
+    	Robot.trashcanGrabber.setTrue();
     }
 
     protected void execute() {
-        Robot.carriage.setFalse();
-        done = true;
     }
 
     protected boolean isFinished() {
-        return done;
+        return false;
     }
 
     protected void end() {
-        done = false;
     }
 
     protected void interrupted() {
-    }
-    
-    public static void ClawIn() {
-    	Robot.carriage.setTrue();
     }
 }

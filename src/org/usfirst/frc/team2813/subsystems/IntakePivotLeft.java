@@ -33,7 +33,7 @@ public class IntakePivotLeft extends PIDSubsystem {
     }
     
     protected void usePIDOutput(double output) {
-        intakePivotLeft.pidWrite(-output);
+        intakePivotLeft.pidWrite(output);
 
     }
 }

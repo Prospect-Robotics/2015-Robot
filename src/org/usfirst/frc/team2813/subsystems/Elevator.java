@@ -32,7 +32,7 @@ public class Elevator extends PIDSubsystem {
 	double encoder;
 
 	public Elevator() {
-		super("Elevator", .020, 0.015, 0.020);
+		super("Elevator", .020, 0.001, 0.020);
 		setAbsoluteTolerance(0.2);
 		getPIDController().setContinuous(false);
 		LiveWindow.addActuator("Elevator", "PIDSubsystem Controller",

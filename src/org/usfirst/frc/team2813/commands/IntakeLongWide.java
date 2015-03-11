@@ -4,30 +4,37 @@ import org.usfirst.frc.team2813.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
-public class IntakeDropTote extends Command {
+public class IntakeLongWide extends Command {
 	
-	double leftValue = 0.449;
-	double rightValue = .504;
+	int state = 0;
+	boolean done;
 
-    public IntakeDropTote() {
-    	requires(Robot.intakePivotRight);
+	public IntakeLongWide() {
+		requires(Robot.intakePivotRight);
 		requires(Robot.intakePivotLeft);
 	}
 
 	protected void initialize() {
 		Robot.intakePivotIntegrated.IntakePivotEnable();
+		done = false;
 		
 	}
 
 	protected void execute() {
-		Robot.intakePivotIntegrated.intakePivotSet(leftValue, rightValue);
+		if (state == 0) {
+		IntakeLongTote.IntakeLong();
+		state = 1;
+		done = true;
+		}
+		else {
+			IntakeWideTote.IntakeWide();
+		state = 0;
+		done = true;
+		}
 	}
 
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	protected void end() {

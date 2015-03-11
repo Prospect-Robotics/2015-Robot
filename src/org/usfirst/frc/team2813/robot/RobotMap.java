@@ -22,7 +22,7 @@ public class RobotMap {
 	public static DigitalInput elevatorelevatorMagnet;
 	public static SpeedController intakePivotintakePivotLeft, intakePivotintakePivotRight;
 	public static AnalogPotentiometer intakePivotintakePotLeft, intakePivotintakePotRight;
-	public static Solenoid carriagecarriageSolenoid;
+	public static Solenoid carriagecarriageSolenoid, trashcanGrabberLeft, trashcanGrabberRight;
 	public static SpeedController intakeRollersintakeRollerLeft, intakeRollersintakeRollerRight;
 	public static SpeedController pIDDrivefrontLeft, pIDDrivefrontRight, pIDDrivebackLeft, pIDDrivebackRight;
 	public static Compressor compressor;
@@ -69,6 +69,9 @@ public class RobotMap {
 		LiveWindow.addActuator("IntakeRollers", "Left Roller", (Victor) intakeRollersintakeRollerLeft);
 
 		compressor = new Compressor(0);
+		
+		trashcanGrabberLeft = new Solenoid(3);
+		trashcanGrabberRight = new Solenoid(2);
 
 		boolean isPractice = true;
 		if (isPractice){
