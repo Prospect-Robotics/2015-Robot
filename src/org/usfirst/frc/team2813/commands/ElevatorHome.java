@@ -10,43 +10,40 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ElevatorHome extends Command {
 
+	boolean done = false;
+
 	public ElevatorHome() {
 
 		requires(Robot.elevator);
 	}
 
 	protected void initialize() {
+		done = false;
+		//IntakeDropTote.intakeDropTote();
 		Robot.elevator.disable();
-		Robot.elevator.elevatorSet(0.4, "down");
-		while (true) {
-			if (!RobotMap.elevatorelevatorMagnet.get())
-				break;
-		}
-		Robot.elevator.resetEncoder();
-		Robot.elevator.elevatorSet(0.4, "up");
-		while (true) {
-			if (Robot.elevator.maxHeight()) {
-				Robot.elevator.elevatorStop();
-				break;
-			}
-		Robot.elevator.setMaxValue();
-		}
-		Robot.elevator.enable();
-		Robot.elevator.setSetpoint(Robot.elevator.getEncoderValue() / 2);
+		Robot.elevator.elevatorSet(-0.3, "down");
 
 	}
 
 	protected void execute() {
+		if (!RobotMap.elevatorelevatorMagnet.get()) {
+			Robot.elevator.elevatorStop();
+			Robot.elevator.resetEncoder();
+			ElevatorOneTote.set();
+			done = true;
+		}
 
 	}
 
 	protected boolean isFinished() {
-		return false;
+		return done;
 	}
 
 	protected void end() {
+		Robot.elevator.elevatorStop();
 	}
 
 	protected void interrupted() {
+		Robot.elevator.elevatorStop();
 	}
 }

@@ -23,10 +23,10 @@ public class Elevator extends PIDSubsystem {
 	
 	double maxValue;
 
-	double leftUp = -1.0;
-	double leftDown = 1.0;
-	double rightUp = 1.0;
-	double rightDown = -1.0;
+	double leftUp = 1.0;
+	double leftDown = -1.0;
+	double rightUp = -1.0;
+	double rightDown = 1.0;
 	
 	double encoderMax;
 	double encoder;
@@ -49,8 +49,8 @@ public class Elevator extends PIDSubsystem {
 	}
 
 	protected void usePIDOutput(double output) {
-		elevatorLeft.pidWrite(-output);
-		elevatorRight.pidWrite(output);
+		elevatorLeft.pidWrite(output);
+		elevatorRight.pidWrite(-output);
 	}
 
 	public void elevatorUp() {

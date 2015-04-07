@@ -7,23 +7,16 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class PickupRoutine extends Command {
+public class ElevatorReachSetpoint extends Command {
 
-	public PickupRoutine() {
-		requires(Robot.carriage);
-		requires(Robot.intakePivotRight);
-		requires(Robot.intakePivotLeft);
-		requires(Robot.intakeRollers);
+	public ElevatorReachSetpoint() {
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
 		requires(Robot.elevator);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.elevator.enable();
-		Robot.elevator.setSetpoint(ElevatorPickup.value);
-		delay(2.0);
-		Robot.elevator.setSetpoint(ElevatorOneTote.value);
-
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -32,7 +25,14 @@ public class PickupRoutine extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return true;
+		if (Robot.elevator.getEncoderValue() >= Robot.elevator.getSetpoint() - 10
+				&& Robot.elevator.getEncoderValue() <= Robot.elevator
+						.getSetpoint() + 5) {
+			return true;
+		} else {
+			return false;
+		}
+		// return Robot.elevator.onTarget();
 	}
 
 	// Called once after isFinished returns true
@@ -43,14 +43,4 @@ public class PickupRoutine extends Command {
 	// subsystems is scheduled to run
 	protected void interrupted() {
 	}
-	
-	protected void delay(double seconds) {
-		while (true) {
-			setTimeout(seconds);
-			if (isTimedOut()) {
-				break;
-			}
-		}
-	}
-	
 }

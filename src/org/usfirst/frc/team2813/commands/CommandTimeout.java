@@ -1,17 +1,15 @@
 package org.usfirst.frc.team2813.commands;
 
-import org.usfirst.frc.team2813.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class RollerIn extends Command {
+public class CommandTimeout extends Command {
 
-    public RollerIn() {
-      
-    	requires(Robot.intakeRollers);
+    public CommandTimeout() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -20,7 +18,6 @@ public class RollerIn extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakeRollers.intakeSuck();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -35,12 +32,5 @@ public class RollerIn extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.intakeRollers.rollersStop();
-
-    }
-    
-    protected void rollerIn() {
-    	Robot.intakeRollers.intakeSuck();
-
     }
 }

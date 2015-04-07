@@ -13,7 +13,7 @@ public class ElevatorPickup extends Command {
 	boolean run = true;
 	boolean done = false;
 
-	static double value = 109.25;
+	public static double value = 95;
 
 	public ElevatorPickup() {
 		requires(Robot.elevator);
@@ -24,7 +24,7 @@ public class ElevatorPickup extends Command {
 		done = false;
 		Robot.elevator.enable();
 		Robot.elevator.setSetpoint(value);
-
+		done = true;
 	}
 
 	protected void execute() {
@@ -43,12 +43,13 @@ public class ElevatorPickup extends Command {
 	}
 
 	public static boolean inPosition() {
-		if (Robot.elevator.getEncoderValue() >= value - 5
+		return Robot.elevator.onTarget();
+		/*if (Robot.elevator.getEncoderValue() >= value - 5
 				&& Robot.elevator.getEncoderValue() <= value + 5) {
 			return true;
 		} else {
 			return false;
-		}
+		}*/
 
 	}
 

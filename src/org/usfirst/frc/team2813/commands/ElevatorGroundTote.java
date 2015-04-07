@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ElevatorGround extends Command {
+public class ElevatorGroundTote extends Command {
 
 	int elevatorSet;
 	boolean run = true;
@@ -15,7 +15,7 @@ public class ElevatorGround extends Command {
 
 	static double value = 311.59;
 
-	public ElevatorGround() {
+	public ElevatorGroundTote() {
 		requires(Robot.elevator);
 
 	}
@@ -43,13 +43,7 @@ public class ElevatorGround extends Command {
 	}
 
 	public static boolean inPosition() {
-		if (Robot.elevator.getEncoderValue() >= value - 5
-				&& Robot.elevator.getEncoderValue() <= value + 5) {
-			return true;
-		} else {
-			return false;
-		}
-
+		return Robot.elevator.onTarget();
 	}
 
 }

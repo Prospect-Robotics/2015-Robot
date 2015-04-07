@@ -24,11 +24,13 @@ public class ElevatorDropTote extends Command {
 		Robot.elevator.disable();
 		done = false;
 		value = Robot.elevator.getEncoderValue() - 150;
-		if (Robot.elevator.getEncoderValue() <= 150)
+		if (Robot.elevator.getEncoderValue() <= 150) {
 			Robot.elevator.disable();
-		else {
+			done = true;
+		} else {
 			Robot.elevator.enable();
 			Robot.elevator.setSetpoint(value);
+			done = true;
 		}
 
 	}

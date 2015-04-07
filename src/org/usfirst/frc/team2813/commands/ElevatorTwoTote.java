@@ -43,13 +43,7 @@ public class ElevatorTwoTote extends Command {
 	}
 
 	public static boolean inPosition() {
-		if (Robot.elevator.getEncoderValue() >= value - 5
-				&& Robot.elevator.getEncoderValue() <= value + 5) {
-			return true;
-		} else {
-			return false;
-		}
-
+		return Robot.elevator.onTarget();
 	}
 
 }

@@ -29,4 +29,8 @@ public class TrashcanGrabberUp extends Command {
 
     protected void interrupted() {
     }
+    
+    public static void setFalse() {
+    	Robot.trashcanGrabber.setFalse();
+    }
 }
