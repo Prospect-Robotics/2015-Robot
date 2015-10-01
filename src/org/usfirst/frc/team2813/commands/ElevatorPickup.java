@@ -13,7 +13,7 @@ public class ElevatorPickup extends Command {
 	boolean run = true;
 	boolean done = false;
 
-	public static double value = 95;
+	public static double value = -570;
 
 	public ElevatorPickup() {
 		requires(Robot.elevator);
